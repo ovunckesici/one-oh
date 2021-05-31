@@ -53,8 +53,8 @@ class OneOhServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'one-oh');
 
         // Register the main class to use with the facade
-        $this->app->singleton('one-oh', function () {
-            return new OneOh;
+        $this->app->singleton('one-oh', function ($app) {
+            return new OneOh($app->config['one-oh']);
         });
     }
 }
